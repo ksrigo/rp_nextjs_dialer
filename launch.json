@@ -1,0 +1,29 @@
+{
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Next.js App",
+        "program": "${workspaceFolder}/${input:programPath}",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run",
+          "dev"
+        ],
+        "cwd": "${workspaceFolder}",
+        "port": 3000,
+        "webRoot": "${workspaceFolder}"
+      }
+    ],
+    "inputs": [
+      {
+        "type": "pickString",
+        "id": "programPath",
+        "description": "Select the entry point for your Next.js app",
+        "options": [
+          "app/page.jsx",
+          "app/layout.jsx"
+        ]
+      }
+    ]
+  }
