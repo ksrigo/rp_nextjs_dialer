@@ -1,22 +1,11 @@
 'use server'
-
-import { getLoginCookie } from "@/lib/handleCookie";
-import { cookies } from "next/headers";
-
-export const updateAccessTokenCookie = async (accessToken) => {
-    try {
-        const cookieStore = await cookies();
-        // cookieStore.set('at', accessToken, { path: '/', httpOnly: true, secure: true });
-        console.log('Access token cookie set successfully');
-    } catch (error) {
-        console.error('Error setting access token cookie:', error);
-    }
-};
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export const customFetch = async (url, method="GET", body={}, isFormData=false, headers={}) => {
     const API_URL = process.env.API_URL;
-    const {accessToken} = await getLoginCookie();
-
+    const session = await getServerSession(authOptions);
+    const accessToken = session?.accessToken;
     
     const defaultHeaders = {
         "Accept": "application/json",

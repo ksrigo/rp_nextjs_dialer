@@ -2,7 +2,8 @@
 
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
-import { customFetch } from '@/api/customFetch';
+import { customFetch } from '@/api/customFetch';  
+import { fetchCallHistory } from '@/services/call';
 
 export const DialerContext = createContext();
 
@@ -26,14 +27,14 @@ export function DialerProvider({ children, contactData: initialContactData, call
     if (extId) {
       try {
         console.log('Context: Fetching call history for extension:', extId);
-        const callHistoryResponse = await customFetch(`extension/${extId}/calls`, "GET");
+        const callHistoryResponse = await fetchCallHistory(extId);
         console.log('Context: Call history response:', callHistoryResponse);
         
-        if (callHistoryResponse && Array.isArray(callHistoryResponse)) {
-          setCallHistory(callHistoryResponse);
-          console.log('Context: Call history updated with', callHistoryResponse.length, 'calls');
+        if (callHistoryResponse.success && Array.isArray(callHistoryResponse.data)) {
+          setCallHistory(callHistoryResponse.data);
+          console.log('Context: Call history updated with', callHistoryResponse.data.length, 'calls');
         } else {
-          console.warn('Context: Invalid call history response:', callHistoryResponse);
+          console.warn('Context: Invalid call history response:', callHistoryResponse.message);
           setCallHistory([]);
         }
         setTriggerCallHistory(false); // Reset the trigger after fetching

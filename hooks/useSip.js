@@ -67,6 +67,8 @@ export const useSip = (delegate) => {
                     authorizationUsername: config.USER,
                     authorizationPassword: config.PASSWORD,
                     displayName: config.NAME,
+                    sipExtensionReplaces: "Supported",
+                    sipExtensionExtraSupported: ["replaces"],
                     instanceId: undefined,
                     instanceIdAlwaysAdded: false,
                     transportOptions: {
@@ -76,6 +78,10 @@ export const useSip = (delegate) => {
                         traceSip: true,
                     },
                     sessionDescriptionHandlerFactoryOptions: {
+                        constraints: {
+                            audio: true,
+                            video: false
+                        },
                         peerConnectionOptions: {
                             rtcConfiguration: {
                                 iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }],
@@ -98,7 +104,6 @@ export const useSip = (delegate) => {
                 const registererOptions = {
                     expires: 180,
                     refreshFrequency: 90,
-                    // simple defaults
                 };
 
                 const registerer = new Registerer(userAgent, registererOptions);
@@ -181,8 +186,18 @@ export const useSip = (delegate) => {
                         authorizationUsername: config.USER,
                         authorizationPassword: config.PASSWORD,
                         displayName: config.NAME,
+                        sipExtensionReplaces: "Supported",
+                        sipExtensionExtraSupported: ["replaces"],
                         transportOptions: { server: config.PROXY, keepAliveInterval: 0, connectionTimeout: 90, traceSip: true },
-                        sessionDescriptionHandlerFactoryOptions: { peerConnectionOptions: { rtcConfiguration: { iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }] } } },
+                        sessionDescriptionHandlerFactoryOptions: {
+                            constraints: {
+                                audio: true,
+                                video: false
+                            },
+                            peerConnectionOptions: {
+                                rtcConfiguration: { iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }] }
+                            }
+                        },
                         delegate: delegate,
                         hackAllowUnregisteredOptionTags: true,
                         allowLegacyNotifications: true,
@@ -305,6 +320,14 @@ export const initSession = (invitation, sessionStatus, silent = false, callbacks
         onRefer: async () => {
             console.log("REFER received - stopping sound");
             await forceStopRingingSound();
+        },
+        onBye: async () => {
+            console.log("BYE received - cleaning up and updating UI");
+            await forceStopRingingSound();
+            session.status = 'Terminated';
+            if (callbacks.onTerminatedCall) {
+                await callbacks.onTerminatedCall();
+            }
         },
         onAnswered: async () => {
             console.log("ANSWERED received - stopping sound");
@@ -558,3 +581,294 @@ export const createAudioContext = function () {
     throw new Error("Web Audio API is not supported by your browser")
   }
 
+
+// Utilities to manage full-duplex hold using SIP re-INVITE and local media toggles
+const replaceSdpDirection = (sdp, newDirection) => {
+    if (!sdp) return sdp;
+    const lines = sdp.split(/\r?\n/);
+    const output = [];
+    let inAudio = false;
+    let insertedForThisMedia = false;
+
+    const pushDirectionIfNeeded = () => {
+        if (inAudio && !insertedForThisMedia) {
+            output.push(`a=${newDirection}`);
+            insertedForThisMedia = true;
+        }
+    };
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+
+        if (line.startsWith('m=')) {
+            // Before switching sections, ensure we have direction for the previous audio m-section
+            pushDirectionIfNeeded();
+
+            // Start of a new media section
+            inAudio = line.startsWith('m=audio');
+            insertedForThisMedia = false;
+            output.push(line);
+            continue;
+        }
+
+        if (inAudio && /^a=(sendrecv|sendonly|recvonly|inactive)$/.test(line)) {
+            // Replace existing direction line with our new one (only once)
+            if (!insertedForThisMedia) {
+                output.push(`a=${newDirection}`);
+                insertedForThisMedia = true;
+            }
+            // Skip original direction line(s)
+            continue;
+        }
+
+        output.push(line);
+    }
+
+    // After processing all lines, ensure last audio section has direction
+    pushDirectionIfNeeded();
+
+    return output.join('\r\n');
+};
+
+const makeHoldModifier = (direction) => (description) => {
+    if (description && typeof description.sdp === 'string') {
+        description.sdp = replaceSdpDirection(description.sdp, direction);
+    }
+    return Promise.resolve(description);
+};
+
+const setLocalMicEnabled = (session, enabled) => {
+    const sdh = session?.sessionDescriptionHandler;
+    const pc = sdh?.peerConnection;
+    if (!pc) return;
+    pc.getSenders().forEach((sender) => {
+        const track = sender.track;
+        if (track && track.kind === 'audio') {
+            track.enabled = enabled;
+        }
+    });
+};
+
+const setRemotePlaybackEnabled = (session, enabled) => {
+    const sdh = session?.sessionDescriptionHandler;
+    const pc = sdh?.peerConnection;
+    if (!pc) return;
+    pc.getReceivers().forEach((receiver) => {
+        const track = receiver.track;
+        if (track && track.kind === 'audio') {
+            track.enabled = enabled;
+        }
+    });
+};
+
+// --- Music On Hold helpers ---
+const DEFAULT_MOH_URL = '/assets/audio/hold.mp3';
+const getAudioSender = (session) => {
+    const sdh = session?.sessionDescriptionHandler;
+    const pc = sdh?.peerConnection;
+    if (!pc) return null;
+    const sender = pc.getSenders().find((s) => s.track && s.track.kind === 'audio');
+    return sender || null;
+};
+
+const startHoldMusic = async (session, options = {}) => {
+    try {
+        const sender = getAudioSender(session);
+        if (!sender) return false;
+
+        const audioCtx = createAudioContext();
+        try { await audioCtx.resume(); } catch (_) {}
+        const destination = audioCtx.createMediaStreamDestination();
+
+        let sourceNode = null;
+        let mohTrack = null;
+
+        if (options.url) {
+            // Prefer decoded buffer source for reliability
+            let usedBufferSource = false;
+            try {
+                const resp = await fetch(options.url, { cache: 'force-cache' });
+                const buf = await resp.arrayBuffer();
+                const audioBuffer = await audioCtx.decodeAudioData(buf);
+                const bufferSource = audioCtx.createBufferSource();
+                bufferSource.buffer = audioBuffer;
+                bufferSource.loop = true;
+                bufferSource.connect(destination);
+                const zeroGain = audioCtx.createGain();
+                zeroGain.gain.value = 0;
+                bufferSource.connect(zeroGain);
+                zeroGain.connect(audioCtx.destination);
+                bufferSource.start(0);
+                sourceNode = bufferSource;
+                session._hold = { audioCtx, destination, sourceNode, originalTrack: sender.track };
+                usedBufferSource = true;
+            } catch (_) {}
+            if (!usedBufferSource) {
+                // Fallback to media element source
+                const el = new Audio(options.url);
+                el.preload = 'auto';
+                el.loop = true;
+                el.muted = true; // prevent local playback
+                try { el.crossOrigin = 'anonymous'; } catch (_) {}
+                const mediaElementSource = audioCtx.createMediaElementSource(el);
+                mediaElementSource.connect(destination);
+                const zeroGain = audioCtx.createGain();
+                zeroGain.gain.value = 0;
+                mediaElementSource.connect(zeroGain);
+                zeroGain.connect(audioCtx.destination);
+                sourceNode = mediaElementSource;
+                await el.play().catch(() => {});
+                session._hold = { audioCtx, destination, sourceNode, mediaElement: el, originalTrack: sender.track };
+            }
+        } else {
+            // Generate a simple tone as fallback MOH
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = 440; // A4
+            gain.gain.value = 0.05; // low volume
+            osc.connect(gain);
+            gain.connect(destination);
+            // also keep graph alive silently
+            const zeroGain = audioCtx.createGain();
+            zeroGain.gain.value = 0;
+            gain.connect(zeroGain);
+            zeroGain.connect(audioCtx.destination);
+            osc.start();
+            sourceNode = osc;
+            session._hold = { audioCtx, destination, sourceNode, originalTrack: sender.track };
+        }
+
+        mohTrack = destination.stream.getAudioTracks()[0];
+        if (mohTrack) {
+            try { mohTrack.enabled = true; } catch (_) {}
+            await sender.replaceTrack(mohTrack);
+            session._hold.mohTrack = mohTrack;
+            return true;
+        }
+        return false;
+    } catch (_) {
+        return false;
+    }
+};
+
+const stopHoldMusic = async (session) => {
+    const hold = session?._hold;
+    const sender = getAudioSender(session);
+    if (!hold || !sender) return;
+    try {
+        if (hold.originalTrack) {
+            await sender.replaceTrack(hold.originalTrack);
+        }
+    } catch (_) {}
+    try {
+        if (hold.mediaElement) {
+            try { hold.mediaElement.pause(); } catch (_) {}
+            try { hold.mediaElement.srcObject = null; } catch (_) {}
+        }
+        if (hold.sourceNode && typeof hold.sourceNode.stop === 'function') {
+            try { hold.sourceNode.stop(); } catch (_) {}
+        }
+        if (hold.audioCtx && typeof hold.audioCtx.close === 'function') {
+            try { await hold.audioCtx.close(); } catch (_) {}
+        }
+    } finally {
+        delete session._hold;
+    }
+};
+
+export const holdCall = async (session) => {
+    if (!session) throw new Error('holdCall: session is required');
+    if (session.isOnHold) return; // already on hold
+
+    try {
+        // Immediately mute both directions locally
+        setLocalMicEnabled(session, false);
+        setRemotePlaybackEnabled(session, false);
+
+        // Attempt network hold via re-INVITE first
+        const modifiersSendonly = [makeHoldModifier('sendonly')];
+        const modifiersInactive = [makeHoldModifier('inactive')];
+
+        const tryInviteWith = async (modifiers, holdBool) => {
+            // Prefer session.invite if available, else fall back to SDH.sendReinvite
+            if (typeof session.invite === 'function') {
+                await session.invite(undefined, { sessionDescriptionHandlerModifiers: modifiers });
+                return true;
+            }
+            const sdh = session.sessionDescriptionHandler;
+            if (sdh && typeof sdh.sendReinvite === 'function') {
+                await sdh.sendReinvite({
+                    sessionDescriptionHandlerOptions: { hold: holdBool === true },
+                    sessionDescriptionHandlerModifiers: modifiers
+                });
+                return true;
+            }
+            return false;
+        };
+
+        let negotiated = false;
+        try { negotiated = await tryInviteWith(modifiersSendonly, true); } catch (_) { negotiated = false; }
+        if (!negotiated) {
+            await tryInviteWith(modifiersInactive, true); // fallback: remote PBX will pause media path
+        }
+
+        // After negotiation, only send MOH if we're actually allowed to send (sendonly)
+        try {
+            const sdh = session?.sessionDescriptionHandler;
+            const pc = sdh?.peerConnection;
+            const tx = pc?.getTransceivers?.().find(t => t?.sender?.track && t.sender.track.kind === 'audio');
+            const dir = (tx && (tx.currentDirection || tx.direction)) || '';
+            if (/sendonly|sendrecv/.test(dir)) {
+                if (!session._mohUrl) session._mohUrl = DEFAULT_MOH_URL;
+                await startHoldMusic(session, { url: session._mohUrl });
+            }
+        } catch (_) {}
+        session.isOnHold = true;
+        if (session.data) {
+            session.data.status = 'Hold';
+        }
+    } catch (e) {
+        // If renegotiation fails, try to at least restore local media
+        try { await stopHoldMusic(session); } catch (_) {}
+        setLocalMicEnabled(session, true);
+        setRemotePlaybackEnabled(session, true);
+        throw e;
+    }
+};
+
+export const resumeCall = async (session) => {
+    if (!session) throw new Error('resumeCall: session is required');
+    if (!session.isOnHold) return; // already active
+
+    try {
+        // Negotiate back to a=sendrecv
+        const modifiers = [makeHoldModifier('sendrecv')];
+        if (typeof session.invite === 'function') {
+            await session.invite(undefined, { sessionDescriptionHandlerModifiers: modifiers });
+        } else if (session.sessionDescriptionHandler && typeof session.sessionDescriptionHandler.sendReinvite === 'function') {
+            await session.sessionDescriptionHandler.sendReinvite({
+                sessionDescriptionHandlerOptions: { hold: false },
+                sessionDescriptionHandlerModifiers: modifiers
+            });
+        }
+
+        // Stop MOH and restore original mic track
+        await stopHoldMusic(session);
+
+        // Re-enable both directions locally
+        setLocalMicEnabled(session, true);
+        setRemotePlaybackEnabled(session, true);
+
+        session.isOnHold = false;
+        if (session.data) {
+            session.data.status = 'Answered';
+        }
+    } catch (e) {
+        throw e;
+    }
+};
+
+export const toggleHold = async (session, shouldHold) => {
+    return shouldHold ? holdCall(session) : resumeCall(session);
+};

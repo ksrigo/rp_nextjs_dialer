@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ContactForm from "@/components/contact/ContactForm";
 import {customFetch} from '@/api/customFetch';
 import toast from "react-hot-toast";
+import { editContact } from '@/services/contact';
 
 const schema = z.object({
     first_name: z.string().min(1, "First name is required"),
@@ -99,13 +100,13 @@ const EditContact = ({onContactEdited, contact, isEditing, modalRef, setIsEditin
         // alert("Form submitted successfully!");
         if(contact.id != null)
         {
-            const response = await customFetch(`contact/${contact.id}`, "PATCH", data);
+            const response = await editContact(contact.id, data);
             // console.log("response.......", response);
-            if(response.detail != "contact updated") {
-                toast.error(response.message || response.detail);
+            if(!response.success) {
+                toast.error(response.message);
             }
             else {
-                toast.success(response.message || response.detail);
+                toast.success(response.message);
                 setContact({
                     id:data.id,
                     first_name:data.first_name,

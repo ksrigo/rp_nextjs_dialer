@@ -1,11 +1,9 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import { customFetch } from '@/api/customFetch';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
-import { setLoginCookie } from '@/lib/handleCookie';
 import Link from 'next/link';
-
+import { signIn } from 'next-auth/react';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -16,8 +14,8 @@ const LoginForm = () => {
 
 
   const [data, setData] = useState({
-    username: 'ksrigo@gmail.com',
-    password: 'toto1234'
+    email: '',
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -36,36 +34,22 @@ const LoginForm = () => {
     setError(null);
 
     try {
-      const response = await customFetch("signin","POST",data, true);
-      console.log("response22", response);
-      if(response.access_token && response.refresh_token) {
-        await setLoginCookie(response.access_token, response.refresh_token);
-      }
-      // const response = await signIn(data);
-      
-      // if (response.error || response.message === 'Unauthorized') {
-      //   const errorMessage = response.message || 'Login failed. Please try again.';
-      //   toast.error(errorMessage);
-      //   setIsLoading(false);
-      //   setError(errorMessage);
-      //   return;
-      // }
-
-      // // Extract tokens directly from response since customFetch now returns parsed data
-      // const { access_token, refresh_token } = response;
-      
-      // await setUserActiveCookies(access_token, refresh_token);
-
-      toast.success('Login successful!');
+      const result = await signIn('credentials', { redirect: true, callbackUrl: '/', username: data.email, password: data.password });
       setIsLoading(false);
+      if (result?.error) {
+        toast.error(result.error);
+        return;
+      }
+      toast.success('Logged in successfully');
       setIsSuccess(true);
       setError(null);
-      router.push('/');
+      // Redirect handled by NextAuth
+
     } catch (error) {
       console.error('Login error:', error);
-      toast.error('An error occurred. Please try again later.');
+      toast.error(error.message || 'An error occurred. Please try again later.');
       setIsLoading(false);
-      setError('An unexpected error occurred');
+      setError(error.message || 'An unexpected error occurred');
     }
   };
 
@@ -76,7 +60,7 @@ const LoginForm = () => {
                 <span className="input-group-text">
                     <i className="ri-mail-line"></i>
                 </span>
-                <input type="email" id="email" name='username' className="form-control" placeholder="Username" onChange={e=>handleChange(e)} />
+                <input type="email" id="email" name='email' className="form-control" placeholder="Email" onChange={e=>handleChange(e)} />
             </div>
         </div>
 

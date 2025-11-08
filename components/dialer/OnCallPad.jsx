@@ -6,6 +6,7 @@ import DialerTopBar from '@/components/shared/DialerTopBar';
 import { useDialer } from '@/app/context/DialerContext';
 import { customFetch } from '@/api/customFetch';
 import toast from 'react-hot-toast';
+import { recordCall } from '@/services/call';
 
 const OnCallPad = ({
     callerInfo, 
@@ -14,7 +15,8 @@ const OnCallPad = ({
     onMute,
     onHold,      // New prop for hold functionality
     onAddCall,   // New prop for adding call
-    onTransfer,   // New prop for transfer
+    onTransfer,   // New prop for blind transfer / open transfer pad
+    onCompleteTransfer, // New prop for attended transfer completion
     secondCall,
     isHolding,
     secondSession,
@@ -84,8 +86,8 @@ const OnCallPad = ({
                 action: isRecording ? 'stop' : 'start'
             }
             try {
-                const response = await customFetch(`extension/${extensionId}/record`,"POST",data); 
-                if(response.msg){
+                const response = await recordCall(extensionId, data); 
+                if(response.success){
                     toast.success("Your call recording has been "+isRecording ? 'started' : 'stopped');
                 }
             } catch (error) {
@@ -246,18 +248,14 @@ const OnCallPad = ({
                     </div>
                     <div 
                         className="option"
-                        onClick={handleTransfer}
-                        title="Transfer"
+                        onClick={secondSession ? onCompleteTransfer : handleTransfer}
+                        title={secondSession ? 'Complete Transfer' : 'Transfer'}
                     >
                         <PhoneForwarded size={40} />
-                        Transfer
+                        {secondSession ? 'Complete' : 'Transfer'}
                     </div>
-                    {secondSession && (
-                        <div 
-                            className="option"
-                            onClick={handleMergeCalls}
-                            title="Merge Calls"
-                        >
+                    {false && secondSession && (
+                        <div className="option" onClick={handleMergeCalls} title="Merge Calls">
                             <Merge size={40} />
                             Merge
                         </div>

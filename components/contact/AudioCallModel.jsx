@@ -5,8 +5,10 @@ import { customFetch } from '@/api/customFetch';
 import toast from 'react-hot-toast';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';  
+import { deleteContact } from '@/services/contact';
 import EditContact from '@/components/contact/EditContact';
 import Modal from '@/components/ui/Modal';
+import { capitaliseCase } from '@/utils/helper';
 
 const AudioCallModel = ({ contact, setContact, onContactDeleted, setStartCall, startCall, openModal, setOpenModal }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -32,19 +34,19 @@ const AudioCallModel = ({ contact, setContact, onContactDeleted, setStartCall, s
     };
 
     const handleDeleteContact = async () => {
-        const response = await customFetch(`contact/${contact.id}`, 'DELETE');
-        if (!response.success && response.detail !== 'contact deleted') {
-            toast.error(response.message || response.detail);
+        const response = await deleteContact(contact.id);
+        if (!response.success) {
+            toast.error(response.message);
         } else {
-            toast.success(response.message || response.detail);
+            toast.success(response.message);
             onContactDeleted();
         }
         setOpenModal(false);
     };
 
-    const capitaliseCase = (text) => {
-        return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-    };
+    // const capitaliseCase = (text) => {
+    //     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    // };
 
     const handleEditContact = () => {
         setIsEditing(true);

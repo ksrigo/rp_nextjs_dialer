@@ -16,12 +16,13 @@ import TransferDialPad from "@/components/dialer/TransferDialPad";
 import AddCallDialPad from "@/components/dialer/AddCallDialPad";
 import { handleAddCall, handleMakeCall } from "@/lib/calls/core";
 import { handleMute, handleRecord } from "@/lib/calls/media";
-import { handleHoldCall, handleTransferCall, handleForceTerminateCall } from "@/lib/calls/advanced";
+import { handleHoldCall, handleTransferCall, handleForceTerminateCall, handleCompleteAttendedTransfer } from "@/lib/calls/advanced";
 import Profile from "@/components/profile/Profile";
 import { useDialer } from "@/app/context/DialerContext";
 import toast from 'react-hot-toast';
 import { customFetch } from '@/api/customFetch';
 import { createAudioContext } from "@/hooks/useSip";
+import { fetchCallHistory } from '@/services/call';
 
 
 function debounce(func, wait) {
@@ -49,6 +50,7 @@ const DialerSidebar = () => {
     const chunksRef = useRef([]);
     const audioContextRef = useRef(null);
     const [secondCallNumber, setSecondCallNumber] = useState('07902416367');
+    const [secondSession, setSecondSession] = useState(null);
     const incomingSessionRef = useRef(null);
     const [speakerDeviceId, setSpeakerDeviceId] = useState('default');
 
@@ -114,12 +116,13 @@ const DialerSidebar = () => {
         debounce(async () => {
             if (extensionData?.[0]?.id) {
                 try {
-                    const callHistoryResponse = await customFetch(`extension/${extensionData?.[0]?.id}/calls`, "GET");
+                    const callHistoryResponse = await fetchCallHistory(extensionData?.[0]?.id);
                     
-                    if (callHistoryResponse && Array.isArray(callHistoryResponse)) {
-                        setCallHistory(callHistoryResponse);
+                    if (callHistoryResponse.success && Array.isArray(callHistoryResponse.data)) {
+                        setCallHistory(callHistoryResponse.data);
                         setTriggerCallHistory(false);
                     } else {
+                        console.warn('Invalid call history response:', callHistoryResponse.message);
                         setCallHistory([]);
                         setTriggerCallHistory(false);
                     }
@@ -418,8 +421,17 @@ const DialerSidebar = () => {
                 console.error('No transfer number provided');
                 return;
             }
-            await handleTransferCall(session, transferNumber, extensionData?.[0]?.domain);
-            setActiveTap(3);
+            const ok = await handleTransferCall(session, transferNumber, extensionData?.[0]?.domain);
+            // Only clear when transfer confirmed (NOTIFY 200)
+            if (ok === true) {
+                setSession({});
+                setCallerInfo(null);
+                setIncomingCall(false);
+                setActiveTap(1);
+            } else {
+                // Transfer failed or no answer: return to active call view
+                setActiveTap(3);
+            }
             setTransferNumber('');
             setTriggerCallHistory(true);
         } catch (error) {
@@ -429,9 +441,28 @@ const DialerSidebar = () => {
 
     const onAddCall = async () => {
         setActiveTap(7);
-        await handleAddCall(session, secondCallNumber, extensionData);
         setTriggerCallHistory(true);
     };
+
+    const onCompleteTransfer = async () => {
+        try {
+            const ok = await handleCompleteAttendedTransfer(session, secondSession, extensionData?.[0]?.domain);
+            if (ok) {
+                setSession({});
+                setSecondSession(null);
+                setCallerInfo(null);
+                setIncomingCall(false);
+                setActiveTap(1);
+            } else {
+                setActiveTap(3);
+            }
+            setTriggerCallHistory(true);
+        } catch (e) {
+            console.error('Error completing attended transfer:', e);
+        }
+    };
+
+    console.log('activeTap', activeTap);
 
     return (
         <>
@@ -454,18 +485,21 @@ const DialerSidebar = () => {
                     startCall={startCall}
                 />}
                 {activeTap === 3 && (
-                    <OnCallPad 
-                        callerInfo={callerInfo}
-                        startTime={session.startTime}
-                        onEndCall={handleCallEnd}
-                        onMute={handleMuteClick}
-                        onHold={handleHold}
-                        onAddCall={handleAddCall}
-                        onTransfer={onTransfer}
-                        isRecording={isRecording}
-                        secondCall={session.secondCall}
-                        isHolding={session.isHolding}
-                    />
+                    <></>
+                    // <OnCallPad 
+                    //     callerInfo={callerInfo}
+                    //     startTime={session.startTime}
+                    //     onEndCall={handleCallEnd}
+                    //     onMute={handleMuteClick}
+                    //     onHold={handleHold}
+                    //     onAddCall={handleAddCall}
+                    //     onTransfer={onTransfer}
+                    //     onCompleteTransfer={onCompleteTransfer}
+                    //     isRecording={isRecording}
+                    //     secondCall={secondSession}
+                    //     isHolding={session.isHolding}
+                    //     secondSession={secondSession}
+                    // />
                 )}
                 {activeTap === 4 && (
                     <IncomingCallPad 
@@ -494,6 +528,7 @@ const DialerSidebar = () => {
                         secondCallNumber={secondCallNumber}
                         setSecondCallNumber={setSecondCallNumber}
                         session={session}
+                        onSecondSession={setSecondSession}
                     />
                 )}
                 {activeTap === 8 && (

@@ -5,6 +5,7 @@ import { useDialer } from '@/app/context/DialerContext';
 import AddContact from '@/components/contact/AddContact';
 import {customFetch} from '@/api/customFetch';
 import EditContact from '@/components/contact/EditContact';
+import { fetchContacts } from '@/services/contact';
 
 const Contact = ({handleCall, setStartCall, startCall}) => {
 
@@ -52,10 +53,10 @@ const Contact = ({handleCall, setStartCall, startCall}) => {
     const fetchContactData = async () => {
         const extensionId = extensionData?.[0]?.id;
         if (extensionId) {
-            const contactResponse = await customFetch(`extension/${extensionId}/contacts`, "GET");
-            if (contactResponse) {
-                setContactData(contactResponse);
-                organiseContact(contactResponse);
+            const contactResponse = await fetchContacts(extensionId);
+            if (contactResponse.success) {
+                setContactData(contactResponse.data);
+                organiseContact(contactResponse.data);
             }
         }
     };

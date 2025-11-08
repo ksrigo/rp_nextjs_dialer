@@ -11,12 +11,13 @@ const AddCallDialPad = ({
     onAddCall,
     session,
     secondCallNumber,
-    setSecondCallNumber 
+    setSecondCallNumber,
+    onSecondSession 
 }) => {
     const [isDialing, setIsDialing] = useState(false);
     const [secondSession, setSecondSession] = useState(null);
 
-    const { setActiveTap } = useDialer();
+    const { setActiveTap, extensionData } = useDialer();
 
     const handleKeyPress = (key) => {
         setSecondCallNumber(prev => prev + key);
@@ -45,8 +46,9 @@ const AddCallDialPad = ({
                 throw new Error('Invalid phone number');
             }
 
-            const newSession = await handleAddCall(session, cleanNumber);
+            const newSession = await handleAddCall(session, cleanNumber, extensionData);
             setSecondSession(newSession);
+            try { onSecondSession?.(newSession); } catch (_) {}
             setActiveTap(3); // Return to call view
         } catch (error) {
             console.error('Error making second call:', error);

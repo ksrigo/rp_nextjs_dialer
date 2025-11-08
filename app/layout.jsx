@@ -5,34 +5,13 @@ import '@/public/assets/css/icons.min.css'
 import '@/public/assets/css/app.min.css'
 import '@/public/assets/css/dialer.css'
 import { useEffect } from 'react'
-import { requestMicrophonePermission, requestNotificationPermission } from '@/lib/permissions'
 import { Toaster } from 'react-hot-toast'
+import { SessionProvider } from 'next-auth/react'
 // import RefreshToken from '/components/shared/RefreshToken'
 // import { createContext } from 'react';
 // export const ExtensionContext = createContext();
 
 export default function RootLayout({ children }) {
-
-  useEffect(() => {
-    const checkPermissions = async () => {
-      const microphonePermissionGranted = await requestMicrophonePermission();
-      if (!microphonePermissionGranted) {
-        alert('Microphone permission is required for this app to work. Please enable it.');
-        return; // Stop execution if microphone permission is denied
-      }
-
-      const notificationPermissionGranted = await requestNotificationPermission();
-      if (!notificationPermissionGranted) {
-        alert('Notification permission is required for this app to work. Please enable it.');
-        return; // Stop execution if notification permission is denied
-      }
-
-      // All permissions granted, proceed with app logic
-      console.log('All permissions granted, app is ready to run.');
-    };
-
-    checkPermissions();
-  }, []);
 
   useEffect(() => {
     const handleUserInteraction = () => {
@@ -68,7 +47,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {/* <RefreshToken /> */}
-          {children}
+          <SessionProvider>
+            {children}
+          </SessionProvider>
         {/* <LayoutWrapper></LayoutWrapper> */}
         {/* <script src="/assets/libs/jquery/jquery.min.js"></script> */}
         <Script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js" strategy="beforeInteractive" />

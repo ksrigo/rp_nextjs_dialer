@@ -1,18 +1,19 @@
 import { customFetch } from '@/api/customFetch';
 import React from 'react'
 import toast from 'react-hot-toast';
+import { changePassword } from '@/services/auth';
+
 const ResetPasswordForm = ({register, handleSubmit, errors, isEditing}) => {
 
     const onSubmit = async (data) => {
         console.log("Submitted data:", data);
         // Perform any additional actions here
-        const response = await customFetch(`password`, "PUT", data);
-        console.log("response", response);
-        if(!response.success) {
-            toast.error(response.message || response.detail);
+        const response = await changePassword(data);
+        if(response.success) {
+            toast.success(response.message);
         }
         else {
-            toast.success(response.message);
+            toast.error(response.message);
         }
     }
 

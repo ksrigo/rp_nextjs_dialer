@@ -8,6 +8,7 @@ import { useDialer } from "@/app/context/DialerContext";
 import { customFetch } from "@/api/customFetch";
 import toast from "react-hot-toast";
 import Modal from "@/components/ui/Modal";
+import { addContact, fetchContacts } from "@/services/contact";
 
 const schema = z.object({
     first_name: z.string().min(1, "First name is required"),
@@ -57,14 +58,14 @@ const AddContact = ({ onContactAdded, openModal, setOpenModal }) => {
     const onSubmit = async (data) => {
         const extensionId = extensionData?.[0]?.id;
         if (extensionId != null) {
-            const response = await customFetch(`extension/${extensionId}/contacts`, "POST", [data]);
-            if (!response.success && response.detail != "success") {
-                toast.error(response.message || response.detail);
+            const response = await addContact(extensionId, data);
+            if (!response.success && response.message != "success") {
+                toast.error(response.message);
             } else {
-                toast.success(response.message || response.detail);
-                const contactResponse = await customFetch(`extension/${extensionId}/contacts`, "GET");
-                if (contactResponse) {
-                    setContactData(contactResponse);
+                toast.success(response.message);
+                const contactResponse = await fetchContacts(extensionId);
+                if (contactResponse.success) {
+                    setContactData(contactResponse.data);
                 }
                 reset({
                     first_name: "",

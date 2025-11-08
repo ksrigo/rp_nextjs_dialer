@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useDialer } from "@/app/context/DialerContext";
-import { customFetch } from "@/api/customFetch";
+import { fetchCallHistory } from "@/services/call";
 import { useEffect, useCallback } from "react";
 
 const CallDetails = () => {
@@ -30,14 +30,14 @@ const CallDetails = () => {
         if (extId) {
             try {
                 console.log('Fetching call history for extension:', extId);
-                const callHistoryResponse = await customFetch(`extension/${extId}/calls`, "GET");
+                const callHistoryResponse = await fetchCallHistory(extId);
                 console.log('Call history response:', callHistoryResponse);
                 
-                if (callHistoryResponse && Array.isArray(callHistoryResponse)) {
-                    setCallHistory(callHistoryResponse);
-                    console.log('Call history updated with', callHistoryResponse.length, 'calls');
+                if (callHistoryResponse.success && Array.isArray(callHistoryResponse.data)) {
+                    setCallHistory(callHistoryResponse.data);
+                    console.log('Call history updated with', callHistoryResponse.data.length, 'calls');
                 } else {
-                    console.warn('Invalid call history response:', callHistoryResponse);
+                    console.warn('Invalid call history response:', callHistoryResponse.message);
                     setCallHistory([]);
                 }
             } catch (error) {
@@ -171,10 +171,10 @@ const CallDetails = () => {
                                 {Array.isArray(callHistory) ? callHistory.map((call, index) => {
                                     const callDate = new Date(call.time);
                                     const formattedDate = callDate.toLocaleDateString('en-US', {
-                                        year: 'numeric', month: 'short', day: 'numeric'
+                                        year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'
                                     });
                                     const formattedTime = callDate.toLocaleTimeString('en-US', {
-                                        hour: '2-digit', minute: '2-digit', hour12: true
+                                        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC'
                                     });
 
                                     const duration = call.duration; 
@@ -186,7 +186,7 @@ const CallDetails = () => {
                                             <img src="assets/images/users/avatar-1.jpg" alt="" />
                                             <div className="call-details">
                                                 <h6>{call.to_user}</h6>
-                                                <small>{formattedDate} {formattedTime}</small>
+                                                <small suppressHydrationWarning>{formattedDate} {formattedTime}</small>
                                             </div>
                                             <div className="call-time">
                                                 <p>{minutes}m {seconds}s</p>
@@ -269,10 +269,10 @@ const CallDetails = () => {
                                 {Array.isArray(callHistory) ? callHistory.filter(call => call.type === 'incoming' && call.is_missed_call).map((call, index) => {
                                     const callDate = new Date(call.time);
                                     const formattedDate = callDate.toLocaleDateString('en-US', {
-                                        year: 'numeric', month: 'short', day: 'numeric'
+                                        year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'
                                     });
                                     const formattedTime = callDate.toLocaleTimeString('en-US', {
-                                        hour: '2-digit', minute: '2-digit', hour12: true
+                                        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC'
                                     });
 
                                     const duration = call.duration; 
@@ -284,7 +284,7 @@ const CallDetails = () => {
                                             <img src="assets/images/users/avatar-1.jpg" alt="" />
                                             <div className="call-details">
                                                 <h6>{call.to_user}</h6>
-                                                <small>{formattedDate} {formattedTime}</small>
+                                                <small suppressHydrationWarning>{formattedDate} {formattedTime}</small>
                                             </div>
                                             <div className="call-time">
                                                 <p>{minutes}m {seconds}s</p>
@@ -312,10 +312,10 @@ const CallDetails = () => {
                                 {Array.isArray(callHistory) ? callHistory.filter(call => call.type === 'incoming' && !call.is_missed_call).map((call, index) => {
                                     const callDate = new Date(call.time);
                                     const formattedDate = callDate.toLocaleDateString('en-US', {
-                                        year: 'numeric', month: 'short', day: 'numeric'
+                                        year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'
                                     });
                                     const formattedTime = callDate.toLocaleTimeString('en-US', {
-                                        hour: '2-digit', minute: '2-digit', hour12: true
+                                        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC'
                                     });
 
                                     const duration = call.duration; 
@@ -327,7 +327,7 @@ const CallDetails = () => {
                                             <img src="assets/images/users/avatar-1.jpg" alt="" />
                                             <div className="call-details">
                                                 <h6>{call.to_user}</h6>
-                                                <small>{formattedDate} {formattedTime}</small>
+                                                <small suppressHydrationWarning>{formattedDate} {formattedTime}</small>
                                             </div>
                                             <div className="call-time">
                                                 <p>{minutes}m {seconds}s</p>
@@ -355,10 +355,10 @@ const CallDetails = () => {
                                 {Array.isArray(callHistory) ? callHistory.filter(call => call.type === 'outgoing').map((call, index) => {
                                     const callDate = new Date(call.time);
                                     const formattedDate = callDate.toLocaleDateString('en-US', {
-                                        year: 'numeric', month: 'short', day: 'numeric'
+                                        year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'
                                     });
                                     const formattedTime = callDate.toLocaleTimeString('en-US', {
-                                        hour: '2-digit', minute: '2-digit', hour12: true
+                                        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC'
                                     });
 
                                     const duration = call.duration; 
@@ -435,10 +435,10 @@ const CallDetails = () => {
 
                                     const recordingDate = new Date(recording.time);
                                     const formattedDate = recordingDate.toLocaleDateString('en-US', {
-                                        year: 'numeric', month: 'short', day: 'numeric'
+                                        year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC'
                                     });
                                     const formattedTime = recordingDate.toLocaleTimeString('en-US', {
-                                        hour: '2-digit', minute: '2-digit', hour12: true
+                                        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC'
                                     });
 
                                     const duration = recording.duration; 
@@ -450,7 +450,7 @@ const CallDetails = () => {
                                             <img src="assets/images/users/avatar-7.jpg" alt="" />
                                             <div className="call-details">
                                                 <h6>{recording.req_user} - {recording.from_user}</h6>
-                                                <small>{formattedDate} {formattedTime}</small>
+                                                <small suppressHydrationWarning>{formattedDate} {formattedTime}</small>
 
                                             </div>
                                             <div className="call-time">

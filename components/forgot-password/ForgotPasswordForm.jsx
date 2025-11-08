@@ -33,22 +33,16 @@ const ForgotPasswordForm = () => {
     setError(null);
 
     try {
-      const response = await customFetch("forget_password","POST",data);
-      console.log("response22", response.success);
+      const response = await forgotPassword(data);
       if(response.success) {
         toast.success(response.message)
       }
       else {
         // console.log("response.detail", response.detail?.[0]);
-        toast.error(response.detail?.[0]?.msg);
+        toast.error(response.message);
       }
      
 
-    //   toast.success('Login successful!');
-    //   setIsLoading(false);
-    //   setIsSuccess(true);
-    //   setError(null);
-    //   router.push('/');
     } catch (error) {
       console.error('Login error:', error);
       toast.error('An error occurred. Please try again later.');

@@ -1,19 +1,17 @@
 import toast from 'react-hot-toast';
 import { customFetch } from '@/api/customFetch';
 import React from 'react'
+import { updateProfile } from '@/services/profile';
 
 const ProfileDetailsForm = ({register, handleSubmit, errors, isEditing, setIsEditing}) => {
 
     const onSubmit = async (data) => {
-        console.log("Submitted data:", data);
-        // Perform any additional actions here
-        const response = await customFetch(`me`, "PATCH", data);
-        console.log("response", response);
-        if(!response.success) {
-            toast.error(response.message);
+        const response = await updateProfile(data);
+        if(response.success) {
+            toast.success(response.message);
         }
         else {
-            toast.success(response.message);
+            toast.error(response.message);
         }
         setIsEditing(false);
 

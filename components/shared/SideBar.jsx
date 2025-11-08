@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
-import { deleteLoginCookie } from "@/lib/handleCookie";
 import { useEffect, useState } from "react";
 import { useDialer } from "@/app/context/DialerContext";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const SideBar = () => {
     const [theme, setTheme] = useState('light');
@@ -28,8 +28,7 @@ const SideBar = () => {
     };
 
     const handleLogout = async () => {
-       await deleteLoginCookie();
-        router.push('/login');
+       await signOut({ redirect: true, callbackUrl: '/login' });
     }
 
     
