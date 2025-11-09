@@ -4,13 +4,14 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    height: auto;
 }
 
 .phone-display input {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    border: solid 1px #5149b9;
-    outline: solid 1px #5149b9;
+    border: solid 1px #7269ef;
+    outline: solid 1px #1E293B;
     box-shadow: 0 2px 4px rgba(81, 73, 185, 0.1);
     background-color: #f7f7ff;
     color: #6c757d;
@@ -19,8 +20,8 @@
 .phone-display input:focus {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    border: solid 1px #5149b9;
-    outline: solid 2px #5149b9;
+    border: solid 1px #7269ef;
+    outline: solid 2px #1E293B;
     box-shadow: 0 4px 8px rgba(81, 73, 185, 0.2);
     background-color: #f7f7ff;
     color: #6c757d;
@@ -174,15 +175,21 @@
     align-items: center; 
 }
 .btn-call{
-    background-color: #5149b9 !important;
+    background-color: #1E293B !important;
 
 }
+[data-bs-theme="dark"] .btn-call{
+    background-color: #5f5ac6 !important;
+}
+[data-bs-theme="light"] .btn-call{
+    background-color: #5f5ac6 !important;
+}
 .btn-voice{
-    background-color: #5149b9 !important;
+    background-color: #1E293B !important;
 
 }
 .btn-back{
-    background-color: #5149b9 !important;
+    background-color: #1E293B !important;
 }
 /* ----------------------------------- Contact ------------------------------- */
 .contact-item {
@@ -242,7 +249,7 @@
     color: white; 
 }
 [data-bs-theme="dark"] .call-history {
-    background-color: #262e35; 
+    background-color: #1E293B; 
 }
 [data-bs-theme="dark"] .call-history::-webkit-scrollbar {
     width: 8px;
@@ -324,10 +331,10 @@
     background-color: #343a40;
 }
 [data-bs-theme="dark"] .dialer{
-    background-color: #5149b9;
+    background-color: #1E293B;
 }
 [data-bs-theme="dark"] .phone-display > input{
-    background-color: #5149b9;
+    background-color: #1E293B;
     color: white;
 }
 /* ---------------------Call History---------------------------- */
@@ -448,7 +455,7 @@
 }
 
 .call-entry:hover::before {
-    background-color: #5149b9; 
+    background-color: #1E293B; 
 }
 
 .call-entry:hover img {
@@ -458,7 +465,7 @@
 /* ---------------------------------- Call Outgoing --------------------------------- */
 .call-container {
     text-align: center;
-    background-color: #5149b9;
+    background-color: #1E293B;
     padding: 40px 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -603,12 +610,19 @@
 }
 
 .d-lg-flex{
-    height: calc(100% - 40px);
+    height: auto;
+    align-items: flex-start;
 }
 
+/* Ensure left dialer column reaches the same bottom level as call history */
+.d-lg-flex .chat-message-list{
+    max-height: none;
+    height: auto;
+    overflow-y: visible;
+}
 /* .phone-input{
     border-radius: 50px;
-    border: 1px solid #5149b9;
+    border: 1px solid #1E293B;
     padding: 10px;
     font-size: 1.5rem;
     margin-bottom: 20px;

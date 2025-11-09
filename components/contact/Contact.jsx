@@ -6,6 +6,8 @@ import AddContact from '@/components/contact/AddContact';
 import {customFetch} from '@/api/customFetch';
 import EditContact from '@/components/contact/EditContact';
 import { fetchContacts } from '@/services/contact';
+import Icon from '@mdi/react';
+import { mdiPhone } from '@mdi/js';
 
 const Contact = ({handleCall, setStartCall, startCall}) => {
 
@@ -142,7 +144,7 @@ const Contact = ({handleCall, setStartCall, startCall}) => {
                                             <a href="#" 
                                                className="text-muted" 
                                                 onClick={() => handleViewContact(contact)}>
-                                                <i className="ri-phone-line color-blue"></i>
+                                            <Icon path={mdiPhone} size={1} color="blue" />
                                             </a>
                                         </div>
                                     </div>

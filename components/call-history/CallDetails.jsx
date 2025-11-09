@@ -2,6 +2,8 @@ import Image from "next/image";
 import { useDialer } from "@/app/context/DialerContext";
 import { fetchCallHistory } from "@/services/call";
 import { useEffect, useCallback } from "react";
+import Icon from '@mdi/react';  
+import { mdiCallMissed, mdiCallReceived, mdiCallMade, mdiVoicemail, mdiRecordCircleOutline, mdiPhoneClock, mdiPhoneIncoming, mdiPhoneOutgoing, mdiPhoneMissed, mdiPlayCircle, mdiPhone } from '@mdi/js';
 
 const CallDetails = () => {
     const handleRedial = (number) => {
@@ -29,15 +31,11 @@ const CallDetails = () => {
         const extId = selectedExtension?.id || extensionData?.[0]?.id;
         if (extId) {
             try {
-                console.log('Fetching call history for extension:', extId);
                 const callHistoryResponse = await fetchCallHistory(extId);
-                console.log('Call history response:', callHistoryResponse);
                 
                 if (callHistoryResponse.success && Array.isArray(callHistoryResponse.data)) {
                     setCallHistory(callHistoryResponse.data);
-                    console.log('Call history updated with', callHistoryResponse.data.length, 'calls');
                 } else {
-                    console.warn('Invalid call history response:', callHistoryResponse.message);
                     setCallHistory([]);
                 }
             } catch (error) {
@@ -84,37 +82,38 @@ const CallDetails = () => {
                                     </div>
 
                                     <div>
-                                        <ul className="nav nav-tabs" id="callDetailsTabs" role="tablist">
+                                        <ul className="nav nav-tabs flex-nowrap overflow-hidden" id="callDetailsTabs" role="tablist" style={{ whiteSpace: 'nowrap' }}>
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link active" id="call-history-tab" data-bs-toggle="tab" href="#call-history" role="tab" aria-controls="call-history" aria-selected="true">
-                                                    <img src="assets/images/call/call-history.svg" className="img-call-history" alt="Call History Icon" /> Call History
+                                                    <Icon path={mdiPhoneClock} size={1} className="img-call-history" color="orange" /> Call History
                                                 </a>
                                             </li>
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link" id="missed-calls-tab" data-bs-toggle="tab" href="#missed-calls" role="tab" aria-controls="missed-calls" aria-selected="false" tabIndex="-1">
-                                                    <img src="assets/images/call/call-missed.svg" className="img-call-history" alt="Missed Calls Icon" /> Missed Calls
+                                                <Icon path={mdiPhoneMissed} size={1} className="img-call-history" color="red" /> 
+                                                    Missed Calls
                                                 </a>
                                             </li>
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link" id="incoming-calls-tab" data-bs-toggle="tab" href="#incoming-calls" role="tab" aria-controls="incoming-calls" aria-selected="false" tabIndex="-1">
-                                                    <img src="assets/images/call/call-incoming.svg" className="img-call-history" alt="Incoming Calls Icon" /> Incoming
+                                                <Icon path={mdiPhoneIncoming} size={1} className="img-call-history" color="green" />Incoming
                                                     Calls
                                                 </a>
                                             </li>
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link" id="outgoing-calls-tab" data-bs-toggle="tab" href="#outgoing-calls" role="tab" aria-controls="outgoing-calls" aria-selected="false" tabIndex="-1">
-                                                    <img src="assets/images/call/call-outgoing.svg" className="img-call-history" alt="Outgoing Calls Icon" />  Outgoing
+                                                <Icon path={mdiPhoneOutgoing} size={1} className="img-call-history" color="blue" /> Outgoing
                                                     Calls
                                                 </a>
                                             </li>
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link" id="voicemail-tab" data-bs-toggle="tab" href="#voicemail" role="tab" aria-controls="voicemail" aria-selected="false" tabIndex="-1">
-                                                    <img src="assets/images/call/voicemail.svg" className="img-call-history" alt="Voicemail Icon" /> Voicemail
+                                                <Icon path={mdiVoicemail} size={1} className="img-call-history" color="red" />Voicemail
                                                 </a>
                                             </li>
                                             <li className="nav-item" role="presentation">
                                                 <a className="nav-link" id="recordings-tab" data-bs-toggle="tab" href="#recordings" role="tab" aria-controls="recordings" aria-selected="false" tabIndex="-1">
-                                                    <img src="assets/images/call/call-recording.svg" className="img-call-history" alt="Recordings Icon" /> Recordings
+                                                <Icon path={mdiRecordCircleOutline} size={1} className="img-call-history" color="purple" /> Recordings
                                                 </a>
                                             </li>
                                         </ul>
@@ -126,7 +125,7 @@ const CallDetails = () => {
                             </div>
                             <div className="col-sm-4 col-4">
                                 <ul className="list-inline user-chat-nav text-end mb-0">
-                                    <li className="list-inline-item">
+                                    {/* <li className="list-inline-item">
                                         <div className="dropdown">
                                             <button className="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i className="ri-search-line"></i>
@@ -142,21 +141,19 @@ const CallDetails = () => {
                                         <button type="button" className="btn nav-btn" data-bs-toggle="modal" data-bs-target="#audiocallModal">
                                             <i className="ri-phone-line"></i>
                                         </button>
-                                    </li>
+                                    </li> */}
 
 
-                                    <li className="list-inline-item">
+                                    {/* <li className="list-inline-item">
                                         <div className="dropdown">
                                             <button className="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i className="ri-more-fill"></i>
                                             </button>
                                             <div className="dropdown-menu dropdown-menu-end">
-                                                <a className="dropdown-item" href="#">Archive <i className="ri-archive-line float-end text-muted"></i></a>
                                                 <a className="dropdown-item" href="#">Muted <i className="ri-volume-mute-line float-end text-muted"></i></a>
-                                                <a className="dropdown-item" href="#">Delete <i className="ri-delete-bin-line float-end text-muted"></i></a>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                         </div>
@@ -196,12 +193,12 @@ const CallDetails = () => {
                                                     }}>
                                                         {
                                                             call.type === 'outgoing' ? 
-                                                                <Image src="assets/images/call/call-outgoing.svg" className="call-history-icon" alt="Outgoing Calls Icon" width={18} height={18} /> 
+                                                                <Icon path={mdiPhoneOutgoing} size={1} className="call-history-icon" color="blue" /> 
                                                             : call.type === 'incoming' ?
                                                                 call.is_missed_call ?
-                                                                    <Image src="assets/images/call/call-missed.svg" className="call-history-icon" alt="Missed Calls Icon" width={18} height={18} />
-                                                                : <Image src="assets/images/call/call-incoming.svg" className="call-history-icon" alt="Incoming Calls Icon" width={18} height={18} />
-                                                            : <Image src="assets/images/call/call-voicemail.svg" className="call-history-icon" alt="Voicemail Icon" width={18} height={18} />
+                                                                    <Icon path={mdiPhoneMissed} size={1} className="call-history-icon" color="red" />
+                                                                : <Icon path={mdiPhoneIncoming} size={1} className="call-history-icon" color="green" />
+                                                            : <Icon path={mdiVoicemail} size={1} className="call-history-icon" color="red" />
                                                         }
                                                     </button>
                                                 </p>
@@ -293,7 +290,7 @@ const CallDetails = () => {
                                                         handleRedial(call.to_user);
                                                     }}>
                                                        
-                                                        <Image src="assets/images/call/call-missed.svg" className="call-history-icon" alt="Missed Calls Icon" width={18} height={18} /> 
+                                                        <Icon path={mdiPhoneMissed} size={1} className="call-history-icon" color="red" /> 
                                                                 
                                                     </button>
                                                 </p>
@@ -336,7 +333,7 @@ const CallDetails = () => {
                                                         handleRedial(call.to_user);
                                                     }}>
                                                        
-                                                        <Image src="assets/images/call/call-incoming.svg" className="call-history-icon" alt="Incoming Calls Icon" width={18} height={18} /> 
+                                                        <Icon path={mdiPhoneIncoming} size={1} className="call-history-icon" color="green" /> 
                                                                 
                                                     </button>
                                                 </p>
@@ -379,7 +376,7 @@ const CallDetails = () => {
                                                         handleRedial(call.to_user);
                                                     }}>
                                                        
-                                                        <Image src="assets/images/call/call-outgoing.svg" className="call-history-icon" alt="Outgoing Calls Icon" width={18} height={18} /> 
+                                                        <Icon path={mdiPhoneOutgoing} size={1} className="call-history-icon" color="blue" /> 
                                                                 
                                                     </button>
                                                 </p>
@@ -398,7 +395,7 @@ const CallDetails = () => {
                                     <img src="assets/images/users/avatar-7.jpg" alt="" />
                                     <div className="call-details">
                                         <h6>Susan Wilson</h6>
-                                        <small> <iconify-icon icon="bi:voicemail" className="color-red"></iconify-icon> 20
+                                        <small> <Icon path={mdiVoicemail} size={1} className="call-history-icon" color="red" /> 20
                                             Jun 2023 10:20 AM</small>
 
                                     </div>
@@ -406,7 +403,7 @@ const CallDetails = () => {
                                         <p>15m 24s</p>
                                         <p>
                                             <button type="button" className="btn nav-btn" data-bs-toggle="modal" data-bs-target="#audiocallModal">
-                                                <i className="ri-phone-fill"></i>
+                                                <Icon path={mdiPhone} size={1} className="call-history-icon" color="blue" />
                                             </button>
                                         </p>
                                     </div>
@@ -415,7 +412,7 @@ const CallDetails = () => {
                                     <img src="assets/images/users/avatar-8.jpg" alt="" />
                                     <div className="call-details">
                                         <h6>David Taylor</h6>
-                                        <small> <iconify-icon icon="bi:voicemail" className="color-red"></iconify-icon> 20
+                                        <small> <Icon path={mdiVoicemail} size={1} className="call-history-icon" color="red" /> 20
                                             Jun 2023 10:20 AM</small>
 
                                     </div>
@@ -423,7 +420,7 @@ const CallDetails = () => {
                                         <p>15m 24s</p>
                                         <p>
                                             <button type="button" className="btn nav-btn" data-bs-toggle="modal" data-bs-target="#audiocallModal">
-                                                <i className="ri-phone-fill"></i>
+                                                <Icon path={mdiPhone} size={1} className="call-history-icon" color="blue" />
                                             </button>
                                         </p>
                                     </div>
@@ -457,7 +454,7 @@ const CallDetails = () => {
                                                 <p>{minutes}m {seconds}s</p>
                                                 <p>
                                                     <button type="button" className="btn nav-btn" data-bs-toggle="modal" data-bs-target="#audiocallModal">
-                                                        <i className="ri-play-fill"></i>
+                                                        <Icon path={mdiPlayCircle} size={1} className="call-history-icon" color="purple" />
                                                     </button>
                                                 </p>
                                             </div>

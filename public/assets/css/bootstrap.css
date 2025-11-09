@@ -139,13 +139,13 @@ File: Custom Bootstrap Css File
   color-scheme: dark;
   --bs-body-color: #a6b0cf;
   --bs-body-color-rgb: 166, 176, 207;
-  --bs-body-bg: #303841;
+  --bs-body-bg: #0F172A;
   --bs-body-bg-rgb: 48, 56, 65;
   --bs-emphasis-color: #f8f9fa;
   --bs-emphasis-color-rgb: 248, 249, 250;
   --bs-secondary-color: #abb4d2;
   --bs-secondary-color-rgb: 171, 180, 210;
-  --bs-secondary-bg: #36404a;
+  --bs-secondary-bg: #1E293B;
   --bs-secondary-bg-rgb: 54, 64, 74;
   --bs-tertiary-color: rgba(166, 176, 207, 0.5);
   --bs-tertiary-color-rgb: 166, 176, 207;
@@ -183,13 +183,13 @@ File: Custom Bootstrap Css File
   --bs-code-color: #f18bba;
   --bs-highlight-color: #a6b0cf;
   --bs-highlight-bg: #665429;
-  --bs-border-color: #36404a;
+  --bs-border-color: #1E293B;
   --bs-border-color-translucent: #39414b;
   --bs-form-valid-color: #6ae6c6;
   --bs-form-valid-border-color: #6ae6c6;
   --bs-form-invalid-color: #f591a9;
   --bs-form-invalid-border-color: #f591a9;
-  --bs-hover-color: #5149b9;
+  --bs-hover-color: #1E293B;
 }
 
 *,
@@ -13623,7 +13623,7 @@ button, a {
   background-color: #313a43;
 }
 [data-bs-theme=dark] .dropdown-menu .dropdown-item:hover {
-  background-color: #36404a;
+  background-color: #1E293B;
 }
 
 .nav-tabs > li > a, .nav-pills > li > a {

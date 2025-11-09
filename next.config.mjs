@@ -3,6 +3,7 @@ const nextConfig = {
   env: {
     API_URL: process.env.API_URL,
     COOKIE_URL: process.env.COOKIE_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
     images: {
       domains: ['localhost'],

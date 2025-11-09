@@ -7,6 +7,8 @@ import { useDialer } from '@/app/context/DialerContext';
 import { customFetch } from '@/api/customFetch';
 import toast from 'react-hot-toast';
 import { recordCall } from '@/services/call';
+import Icon from '@mdi/react';
+import { mdiPhone } from '@mdi/js';
 
 const OnCallPad = ({
     callerInfo, 
@@ -262,11 +264,7 @@ const OnCallPad = ({
                     )}
                 </div>
                 <div className="end-call-button" onClick={handleEndCall}>
-                    <Phone 
-                        size={40} 
-                        className="text-white text-center" 
-                        style={{ transform: 'rotate(135deg)' }} 
-                    />
+                    <Icon path={mdiPhone} size={1} color="white" style={{ transform: 'rotate(135deg)' }} />
                 </div>
             </div>
         </div>

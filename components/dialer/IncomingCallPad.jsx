@@ -4,8 +4,9 @@ import { Phone,  PhoneOff } from "lucide-react";
 import Image from "next/image";
 import DialerTopBar from "@/components/shared/DialerTopBar";
 import { handleAnswerCall } from "@/lib/calls/actions";
-
-
+import Icon from '@mdi/react';
+import { mdiPhone } from '@mdi/js';
+import { mdiPhoneOff } from '@mdi/js';
 
 const IncomingCallPad = ({ 
     callerInfo,
@@ -68,19 +69,21 @@ const IncomingCallPad = ({
                         </div>
                         <div className="d-flex justify-content-between flex-row w-100">
                             <div className="answer-call-button">
-                                <Phone 
+                                <Icon path={mdiPhone} size={1} color="white" onClick={handleAnswerClick} />
+                                {/* <Phone 
                                     size={40} 
                                     className="text-white text-center" 
                                     onClick={handleAnswerClick}
-                                />
+                                /> */}
                             </div>
 
                             <div className="end-call-button">
-                                <PhoneOff 
+                                <Icon path={mdiPhoneOff} size={1} color="white" onClick={onRejectCall} />
+                                {/* <PhoneOff 
                                     size={40} 
                                     className="text-white text-center" 
                                     onClick={onRejectCall}
-                                />
+                                /> */}
                             </div>
 
                         </div>

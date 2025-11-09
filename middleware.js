@@ -7,6 +7,7 @@ export async function middleware(request) {
 
   // Allow static assets (API routes are excluded by matcher)
   if (
+    pathname.startsWith("/api/auth") ||
     pathname.startsWith("/assets") ||
     pathname.startsWith("/static") ||
     pathname.startsWith("/public")
@@ -15,7 +16,7 @@ export async function middleware(request) {
   }
 
   // Use NextAuth JWT to detect authenticated user
-  const token = await getToken({ req: request, secret: process.env.AUTH_SECRET });
+  const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
   const now = Math.floor(Date.now() / 1000);
   const isExpired = typeof token?.accessTokenExpires === "number" && token.accessTokenExpires <= now;
   const hasValidToken = !!token && !token?.error && !isExpired;
@@ -29,9 +30,19 @@ export async function middleware(request) {
     return NextResponse.next();
   }
 
-  // Protect all other routes - require a valid token
-  if (!hasValidToken) {
+  // Protect all other routes - require at least a token (allow expired to reach server to refresh)
+  if (!token) {
     return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // If token has an error (e.g., refresh failed), clear session cookies and send to login
+  if (token?.error) {
+    const res = NextResponse.redirect(new URL("/login", request.url));
+    res.cookies.delete('next-auth.session-token');
+    res.cookies.delete('__Secure-next-auth.session-token');
+    res.cookies.delete('next-auth.csrf-token');
+    res.cookies.delete('next-auth.callback-url');
+    return res;
   }
 
   return NextResponse.next();

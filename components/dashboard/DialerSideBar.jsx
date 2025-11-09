@@ -485,21 +485,20 @@ const DialerSidebar = () => {
                     startCall={startCall}
                 />}
                 {activeTap === 3 && (
-                    <></>
-                    // <OnCallPad 
-                    //     callerInfo={callerInfo}
-                    //     startTime={session.startTime}
-                    //     onEndCall={handleCallEnd}
-                    //     onMute={handleMuteClick}
-                    //     onHold={handleHold}
-                    //     onAddCall={handleAddCall}
-                    //     onTransfer={onTransfer}
-                    //     onCompleteTransfer={onCompleteTransfer}
-                    //     isRecording={isRecording}
-                    //     secondCall={secondSession}
-                    //     isHolding={session.isHolding}
-                    //     secondSession={secondSession}
-                    // />
+                    <OnCallPad 
+                        callerInfo={callerInfo}
+                        startTime={session.startTime}
+                        onEndCall={handleCallEnd}
+                        onMute={handleMuteClick}
+                        onHold={handleHold}
+                        onAddCall={handleAddCall}
+                        onTransfer={onTransfer}
+                        onCompleteTransfer={onCompleteTransfer}
+                        isRecording={isRecording}
+                        secondCall={secondSession}
+                        isHolding={session.isHolding}
+                        secondSession={secondSession}
+                    />
                 )}
                 {activeTap === 4 && (
                     <IncomingCallPad 

@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation';
 const Home = async () => {
 
   const session = await getServerSession(authOptions);
-  if (!session) {
+  if (!session || session?.error) {
     redirect('/login');
   }
 

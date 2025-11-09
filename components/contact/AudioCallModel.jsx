@@ -9,6 +9,8 @@ import { deleteContact } from '@/services/contact';
 import EditContact from '@/components/contact/EditContact';
 import Modal from '@/components/ui/Modal';
 import { capitaliseCase } from '@/utils/helper';
+import Icon from '@mdi/react';
+import { mdiPhone } from '@mdi/js';
 
 const AudioCallModel = ({ contact, setContact, onContactDeleted, setStartCall, startCall, openModal, setOpenModal }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -118,7 +120,7 @@ const AudioCallModel = ({ contact, setContact, onContactDeleted, setStartCall, s
                                                 setStartCall(true);
                                             }}
                                         >
-                                            <i className="ri-phone-fill"></i>
+                                            <Icon path={mdiPhone} size={1} color="blue" />
                                         </button>
                                     </div>
                                 ))}

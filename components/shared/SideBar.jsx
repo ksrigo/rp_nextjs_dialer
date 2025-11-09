@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useDialer } from "@/app/context/DialerContext";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import Icon from '@mdi/react';
+import { mdiPhone, mdiAccountDetails, mdiChatProcessing, mdiAccountEdit, mdiThemeLightDark } from '@mdi/js';
 
 const SideBar = () => {
     const [theme, setTheme] = useState('light');
@@ -53,24 +55,24 @@ const SideBar = () => {
 
                     <li className="nav-item" data-bs-placement="top" aria-label="Dialer" data-bs-original-title="Dialer" role="presentation" onClick={() => setActiveTap(1)}>
                         <a className={`nav-link ${activeTap === 1 ? 'active' : ''}`} id="pills-groups-tab" data-bs-toggle="pill" href="#pills-groups" role="tab" aria-selected="true">
-                            <i className="ri-phone-line"></i>
+                            <Icon path={mdiPhone} size={1} className="" />
                         </a>
                     </li>
 
 
                     <li className="nav-item" data-bs-placement="top" aria-label="Contacts" data-bs-original-title="Contacts" role="presentation" onClick={() => setActiveTap(2)}>
                         <a className={`nav-link ${activeTap === 2 ? 'active' : ''}`} id="pills-contacts-tab" data-bs-toggle="pill" href="#pills-contacts" role="tab" aria-selected="false" tabIndex="-1">
-                            <i className="ri-contacts-line"></i>
+                        <Icon path={mdiAccountDetails} size={1} />
                         </a>
                     </li>
-                    <li className="nav-item" data-bs-placement="top" aria-label="Chatss" data-bs-original-title="Chatss" role="presentation" onClick={() => setActiveTap(3)}>
+                    <li className="nav-item" data-bs-placement="top" aria-label="Chatss" data-bs-original-title="Chatss" role="presentation" onClick={() => setActiveTap(9)}>
                         <a className={`nav-link ${activeTap === 3 ? 'active' : ''}`} id="pills-chat-tab1" data-bs-toggle="pill1" href="#" role="tab" aria-selected="false" tabIndex="-1">
-                            <i className="ri-message-3-line"></i>
+                        <Icon path={mdiChatProcessing} size={1} />
                         </a>
                     </li>
                     <li className="nav-item" data-bs-placement="top" aria-label="Profile" data-bs-original-title="Profile" role="presentation" onClick={() => setActiveTap(8)}>
                         <a className={`nav-link ${activeTap === 8 ? 'active' : ''}`} id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-selected="false" tabIndex="-1">
-                            <i className="ri-user-line"></i>
+                        <Icon path={mdiAccountEdit} size={1} />
                         </a>
                     </li>
                     {/* <li className="nav-item" data-bs-placement="top" aria-label="Settings" data-bs-original-title="Settings" role="presentation" onClick={() => setActiveTap(4)}>
@@ -97,7 +99,7 @@ const SideBar = () => {
                     <li className="nav-item">
                         <a className="nav-link light-dark-mode" href="#"  onClick={toggleTheme}  
                             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>
-                            <i className="ri-sun-line theme-mode-icon"></i>
+                          <Icon path={mdiThemeLightDark} size={1} />
                         </a>
                     </li>
 

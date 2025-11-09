@@ -5,6 +5,8 @@ import { IoIosBackspace } from "react-icons/io";
 import DialerTopBar from '@/components/shared/DialerTopBar';
 import { useDialer } from '@/app/context/DialerContext';
 import { customFetch } from '@/api/customFetch';
+import Icon from '@mdi/react';
+import { mdiPhone } from '@mdi/js';
 
 const InitialDialer = ({onMakeCall, setStartCall, startCall}) => {
     const [isDialing, setIsDialing] = useState(false);
@@ -95,7 +97,7 @@ const InitialDialer = ({onMakeCall, setStartCall, startCall}) => {
                     onClick={handleCall}
                     disabled={isDialing || !phoneNumber}
                 >
-                    <Phone size={20} />
+                 <Icon path={mdiPhone} size={1} />
                 </button>
             </div>
 
