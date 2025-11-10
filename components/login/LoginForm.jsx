@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -12,29 +15,28 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
-
-  const [data, setData] = useState({
-    email: '',
-    password: ''
+  // Zod schema: username (email field) and password are required
+  const schema = z.object({
+    email: z.string().min(1, 'Username is required'),
+    password: z.string().min(1, 'Password is required'),
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: { email: '', password: '' }
+  });
 
   // const signIn = async (data) => {
   //   const response = await customFetch("signin","POST",data, true);
   //   return response;
   // }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     setIsLoading(true);
     setError(null);
 
     try {
-      const result = await signIn('credentials', { redirect: true, callbackUrl: '/', username: data.email, password: data.password });
+      const result = await signIn('credentials', { redirect: true, callbackUrl: '/', email: data.email, password: data.password });
       setIsLoading(false);
       if (result?.error) {
         toast.error(result.error);
@@ -54,14 +56,24 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
             <div className="input-group">
                 <span className="input-group-text">
                     <i className="ri-mail-line"></i>
                 </span>
-                <input type="email" id="email" name='email' className="form-control" placeholder="Email" onChange={e=>handleChange(e)} />
+                <input
+                  type="text"
+                  id="email"
+                  className="form-control"
+                  placeholder="Username"
+                  aria-invalid={!!errors.email}
+                  {...register('email')}
+                />
             </div>
+            {errors.email?.message && (
+              <div className="text-danger mt-1">{errors.email.message}</div>
+            )}
         </div>
 
         <div className="mb-3">
@@ -69,8 +81,18 @@ const LoginForm = () => {
                 <span className="input-group-text">
                     <i className="ri-lock-2-line"></i>
                 </span>
-                <input type="password" id="password" name='password' className="form-control" placeholder="Password" onChange={e=>handleChange(e)} />
+                <input
+                  type="password"
+                  id="password"
+                  className="form-control"
+                  placeholder="Password"
+                  aria-invalid={!!errors.password}
+                  {...register('password')}
+                />
             </div>
+            {errors.password?.message && (
+              <div className="text-danger mt-1">{errors.password.message}</div>
+            )}
         </div>
 
         {/* <div className="input-group mb-2">
@@ -88,7 +110,9 @@ const LoginForm = () => {
           </div>
         <div className="input-group mb-2">
             {/* <button className="btn btn-primary waves-effect waves-light" type="submit">Sign in</button> */}
-            <button type="submit" className="btn btn-primary w-100">Sign In</button>
+            <button type="submit" className="btn btn-primary w-100" disabled={isLoading}>
+              {isLoading ? 'Signing In...' : 'Sign In'}
+            </button>
         </div>
     </form>
   )

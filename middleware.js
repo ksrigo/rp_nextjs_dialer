@@ -8,9 +8,11 @@ export async function middleware(request) {
   // Allow static assets (API routes are excluded by matcher)
   if (
     pathname.startsWith("/api/auth") ||
-    pathname.startsWith("/assets") ||
-    pathname.startsWith("/static") ||
-    pathname.startsWith("/public")
+    pathname === "/login" ||
+    pathname === "/forgot-password" ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/favicon") ||
+    pathname.startsWith("/images")
   ) {
     return NextResponse.next();
   }

@@ -1,4 +1,4 @@
-"use server"
+"use client";
 import LoginForm from "@/components/login/LoginForm"
 import Link from "next/link"
 

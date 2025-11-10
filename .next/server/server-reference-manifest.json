@@ -1,0 +1,239 @@
+{
+  "node": {
+    "7f868f5cd69a23a0663d34b488ba9ac0a1820e2774": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc"
+      },
+      "filename": "app/page.jsx",
+      "exportedName": "default"
+    },
+    "7f9efe266687800b6a827b1c1cf4cd430724ae59bf": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc"
+      },
+      "filename": "services/dashboard/index.js",
+      "exportedName": "fetchDashboard"
+    },
+    "7f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/api/auth/[...nextauth]/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/api/auth/[...nextauth]/route": "rsc"
+      },
+      "filename": "api/customFetch.js",
+      "exportedName": "customFetch"
+    },
+    "7f3650da2235258473ee6f72fb79f2570483abeb41": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/api/auth/[...nextauth]/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/api/auth/[...nextauth]/route": "rsc"
+      },
+      "filename": "services/auth/index.js",
+      "exportedName": "changePassword"
+    },
+    "7f686f5cd95818fc13919f884454fe3ee2b8a73714": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/api/auth/[...nextauth]/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/api/auth/[...nextauth]/route": "rsc"
+      },
+      "filename": "services/auth/index.js",
+      "exportedName": "forgotPassword"
+    },
+    "7f895ed078da788cc920332fee3a055e1272ee43c4": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/api/auth/[...nextauth]/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/api/auth/[...nextauth]/route": "rsc"
+      },
+      "filename": "services/auth/index.js",
+      "exportedName": "refreshToken"
+    },
+    "7f998bf7d300ca6fd05cb30e632cb4401edbb7ce20": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapp%2Fpage.jsx%22%2C%5B%7B%22id%22%3A%227f868f5cd69a23a0663d34b488ba9ac0a1820e2774%22%2C%22exportedName%22%3A%22default%22%2C%22filename%22%3A%22app%2Fpage.jsx%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fdashboard%2Findex.js%22%2C%5B%7B%22id%22%3A%227f9efe266687800b6a827b1c1cf4cd430724ae59bf%22%2C%22exportedName%22%3A%22fetchDashboard%22%2C%22filename%22%3A%22services%2Fdashboard%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/api/auth/[...nextauth]/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fapi%2FcustomFetch.js%22%2C%5B%7B%22id%22%3A%227f67a8d733317beaa3fdffe7d61ecaaf0fa5dc3c98%22%2C%22exportedName%22%3A%22customFetch%22%2C%22filename%22%3A%22api%2FcustomFetch.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fauth%2Findex.js%22%2C%5B%7B%22id%22%3A%227f3650da2235258473ee6f72fb79f2570483abeb41%22%2C%22exportedName%22%3A%22changePassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f686f5cd95818fc13919f884454fe3ee2b8a73714%22%2C%22exportedName%22%3A%22forgotPassword%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f895ed078da788cc920332fee3a055e1272ee43c4%22%2C%22exportedName%22%3A%22refreshToken%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%2C%7B%22id%22%3A%227f998bf7d300ca6fd05cb30e632cb4401edbb7ce20%22%2C%22exportedName%22%3A%22login%22%2C%22filename%22%3A%22services%2Fauth%2Findex.js%22%7D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/api/auth/[...nextauth]/route": "rsc"
+      },
+      "filename": "services/auth/index.js",
+      "exportedName": "login"
+    },
+    "7f66e3d7a9b65d6b230634ed900e4718dec15ed228": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/call/index.js",
+      "exportedName": "fetchCallHistory"
+    },
+    "7f784be15b2a03d91e66bdcca959ca04ae2ca3396f": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/call/index.js",
+      "exportedName": "fetchRecording"
+    },
+    "7ff03b97d29c150c1121b79059a32454cbf5e2f4e7": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/call/index.js",
+      "exportedName": "recordCall"
+    },
+    "7f04429318d5c8f827411bff3abfde625358e07aec": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/contact/index.js",
+      "exportedName": "editContact"
+    },
+    "7f22afb405067da5e80a5b57a6441a8d050926b5b2": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/contact/index.js",
+      "exportedName": "deleteContact"
+    },
+    "7f2867697298529bea62e14a2d9c97fb5025d9ff17": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/contact/index.js",
+      "exportedName": "fetchContacts"
+    },
+    "7ffbd0c78cbd1521bae08fe055230d6ae601f22e09": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/contact/index.js",
+      "exportedName": "addContact"
+    },
+    "7faf731054441d167985facbc2eddae55eb6d83a68": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/profile/index.js",
+      "exportedName": "updateProfile"
+    },
+    "7feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcall%2Findex.js%22%2C%5B%7B%22id%22%3A%227f66e3d7a9b65d6b230634ed900e4718dec15ed228%22%2C%22exportedName%22%3A%22fetchCallHistory%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227f784be15b2a03d91e66bdcca959ca04ae2ca3396f%22%2C%22exportedName%22%3A%22fetchRecording%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%2C%7B%22id%22%3A%227ff03b97d29c150c1121b79059a32454cbf5e2f4e7%22%2C%22exportedName%22%3A%22recordCall%22%2C%22filename%22%3A%22services%2Fcall%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fcontact%2Findex.js%22%2C%5B%7B%22id%22%3A%227f04429318d5c8f827411bff3abfde625358e07aec%22%2C%22exportedName%22%3A%22editContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f22afb405067da5e80a5b57a6441a8d050926b5b2%22%2C%22exportedName%22%3A%22deleteContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227f2867697298529bea62e14a2d9c97fb5025d9ff17%22%2C%22exportedName%22%3A%22fetchContacts%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%2C%7B%22id%22%3A%227ffbd0c78cbd1521bae08fe055230d6ae601f22e09%22%2C%22exportedName%22%3A%22addContact%22%2C%22filename%22%3A%22services%2Fcontact%2Findex.js%22%7D%5D%5D%2C%5B%22%2FUsers%2Fsrigo%2FDocuments%2FMyDocs%2FRingplus_dialer%2Fservices%2Fprofile%2Findex.js%22%2C%5B%7B%22id%22%3A%227faf731054441d167985facbc2eddae55eb6d83a68%22%2C%22exportedName%22%3A%22updateProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%2C%7B%22id%22%3A%227feb19a2f6cf6f66c2c981bb475b3682bd61e21eb4%22%2C%22exportedName%22%3A%22fetchProfile%22%2C%22filename%22%3A%22services%2Fprofile%2Findex.js%22%7D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "services/profile/index.js",
+      "exportedName": "fetchProfile"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "3eh6zHLg3bwM+Q/XV50W/mOVI6SlyPPOfClxlgHsp/Y="
+}

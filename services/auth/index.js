@@ -6,6 +6,7 @@ import { signOut } from 'next-auth/react';
 export const forgotPassword = async (data) => {
     try {
         const response = await customFetch('forget_password', 'POST', data);
+        console.log("response", response);
         return {
             success: true,
             message: response.detail || response.message,
